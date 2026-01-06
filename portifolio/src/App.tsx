@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import Hero from './assets/pages/Home/Home.tsx'
 
 
 const App = () => {
@@ -6,7 +6,8 @@ const App = () => {
 
   return (
     <>
-      App
+      
+      <Hero />
     </>
   )
 }
