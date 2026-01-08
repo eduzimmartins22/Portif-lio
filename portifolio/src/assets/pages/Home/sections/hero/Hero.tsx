@@ -4,7 +4,7 @@ import { Button, Container, Typography } from "@mui/material"
 import Grid from "@mui/material/Grid"
 import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
 import WhatsAppIcon from '@mui/icons-material/WhatsApp';
-import { MarginRounded } from "@mui/icons-material";
+
 
 
 const StyledHero = styled("div")({
