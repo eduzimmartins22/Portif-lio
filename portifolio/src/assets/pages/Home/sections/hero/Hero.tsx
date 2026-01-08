@@ -37,7 +37,7 @@ const Hero = () => {
 
           {/* TEXTO + BOTÕES */}
           <Grid item xs={12} md={8}>
-            <Typography variant="h3" color="error" gutterBottom>
+            <Typography variant="h3" color="#E10600" gutterBottom>
               UGO CELULARES
             </Typography>
 
