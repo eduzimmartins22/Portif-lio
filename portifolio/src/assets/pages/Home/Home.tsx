@@ -1,13 +1,7 @@
-import Hero from "./sections/hero/Hero.tsx"
+import HeroSection from "./sections/hero/HeroSection"
 
 const Home = () => {
-
-
-  return (
-    <>
-      <Hero />
-    </>
-  )
+  return <HeroSection />
 }
 
 export default Home
