@@ -33,7 +33,7 @@ const Products = () => {
     <Box id="Bicicletas" py={19}>
       <Container>
         <Typography variant="h2" textAlign="center" mb={6}>
-          Nossos <span style={{ color: "#FF8C00" }}>Produtos</span>
+       <span style={{ color: "#FF8C00" }}>Bicicletas</span>
         </Typography>
 
         <Grid container spacing={5}>
