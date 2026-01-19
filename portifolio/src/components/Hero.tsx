@@ -4,7 +4,7 @@ const Hero = () => {
   return (
     <Box
       sx={{
-        minHeight: "700px",
+        minHeight: "900px",
         display: "center",
         alignItems: "center",
         textAlign: "center",

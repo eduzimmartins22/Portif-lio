@@ -16,8 +16,8 @@ const Location = () => {
           Nossa <span style={{ color: "#FF8C00" }}>Localização</span>
         </Typography>
 
-        <Typography mb={6}>
-          📍 Terminal de Carapina – Serra / ES
+        <Typography mb={6} fontFamily="Arial Rounded MT Bold">
+          📍 TERMINAL DE CARAPINA - SERRA / ES
         </Typography>
 
         {/* IMAGEM + MAPA */}

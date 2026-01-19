@@ -27,10 +27,10 @@ const items = [
 
 const Products = () => {
   return (
-    <Box id="produtos" py={19}>
+    <Box id="produtos" py={19} backgroundColor="#F2F2F2">
       <Container>
         <Typography variant="h2" textAlign="center" mb={6}>
-          Nossos <span style={{ color: "#FF8C00" }}>Produtos</span>
+          <span style={{ color: "#131212" }}>Nossos</span> <span style={{ color: "#FF8C00" }}>Produtos</span>
         </Typography>
 
         <Grid container spacing={5}>
@@ -50,6 +50,7 @@ const Products = () => {
                   "&:hover": {
                     transform: "translateY(-6px)",
                     boxShadow: 8,
+                    
                   },
                 }}
               >
@@ -66,7 +67,7 @@ const Products = () => {
                 />
 
                 {/* Nome */}
-                <Typography variant="h6" mt={2} textAlign="center">
+                <Typography variant="h6" mt={2} textAlign="center" color="#131212" fontFamily="Arial Rounded MT Bold">
                   {item.name}
                 </Typography>
 
