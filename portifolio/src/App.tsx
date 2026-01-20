@@ -1,4 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom"
+import Cart from "./pages/Cart"
 
 import Header from "./components/Header"
 import Hero from "./components/Hero"
@@ -34,6 +35,7 @@ const App = () => {
           />
 
           {/* PRODUTOS */}
+          <Route path="/cart" element={<Cart />} />
           <Route path="/bicicletas" element={<Bicicletas />} />
         </Routes>
       </CartProvider>

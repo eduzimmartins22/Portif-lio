@@ -11,7 +11,8 @@ import {
   Divider,
   Badge,
 } from "@mui/material"
-
+import type { MouseEvent } from "react"
+import { Link } from "react-router-dom"
 import MenuIcon from "@mui/icons-material/Menu"
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart"
 import { useCart } from "../context/useCart"
@@ -68,7 +69,7 @@ const Header = () => {
           {/* ICONES */}
           <Box display="flex" alignItems="center">
             {/* CARRINHO */}
-            <IconButton color="inherit" component="a" href="/cart">
+            <IconButton color="inherit" component={Link} to="/cart">
               <Badge badgeContent={cartItems.length} color="warning">
                 <ShoppingCartIcon />
               </Badge>
@@ -109,11 +110,9 @@ const Header = () => {
               "Caixas de Som",
             ].map((item) => (
               <MenuItem
-                key={item}
-                component="a"
-                href="/bicicletas#bicicletas"
+              component={Link}
+                to="/bicicletas#Bicicletas"
                 onClick={handleMenuClose}
-                sx={{ fontSize: 14 }}
               >
                 {item}
               </MenuItem>

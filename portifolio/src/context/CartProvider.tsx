@@ -11,10 +11,16 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
     setCartItems((prev) => [...prev, product])
   }
 
+  const removeFromCart = (index: number) => {
+    setCartItems((prev) => prev.filter((_, i) => i !== index))
+  }
+
   const total = cartItems.reduce((sum, item) => sum + item.price, 0)
 
   return (
-    <CartContext.Provider value={{ cartItems, addToCart, total }}>
+    <CartContext.Provider
+      value={{ cartItems, addToCart, removeFromCart, total }}
+    >
       {children}
     </CartContext.Provider>
   )
