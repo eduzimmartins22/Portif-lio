@@ -64,7 +64,7 @@ const Reparo = () => {
               sx={{ display: "flex", alignItems: "center", gap: 1 }}
             >
               <SpeedIcon sx={{ color: "#FF8C00" }} />
-              Serviço Rápido e Lucrativo
+              Serviço Rápido e Eficiente
             </Typography>
 
             <Typography mb={2}>
