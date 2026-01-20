@@ -2,9 +2,10 @@ import { BrowserRouter, Routes, Route } from "react-router-dom"
 
 import Header from "./components/Header"
 import Hero from "./components/Hero"
+import Reparos from "./components/Reparos"
 import Products from "./components/Products"
 import Location from "./components/Location"
-import Pagamento from "./components/Pagamento"
+import Pagamento from "./components/Contato"
 import ScrollToHash from "./components/ScrollToHash"
 
 import Bicicletas from "./components/Produtos/Bicicletas"
@@ -24,6 +25,7 @@ const App = () => {
               <>
                 <Header />
                 <Hero />
+                <Reparos />
                 <Products />
                 <Location />
                 <Pagamento />

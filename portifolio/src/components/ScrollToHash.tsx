@@ -5,11 +5,13 @@ const ScrollToHash = () => {
   const { hash } = useLocation()
 
   useEffect(() => {
-    if (hash) {
-      const element = document.querySelector(hash)
-      if (element) {
-        element.scrollIntoView({ behavior: "smooth" })
-      }
+    if (!hash) return
+
+    const id = hash.replace("#", "")
+    const element = document.getElementById(id)
+
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" })
     }
   }, [hash])
 

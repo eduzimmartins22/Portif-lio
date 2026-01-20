@@ -123,6 +123,10 @@ const Header = () => {
 
         <Divider />
 
+        <MenuItem component="a" href="#Reparo" onClick={handleMenuClose}>
+          Reparos
+        </MenuItem>
+          
         <MenuItem component="a" href="#localizacao" onClick={handleMenuClose}>
           Localização
         </MenuItem>
