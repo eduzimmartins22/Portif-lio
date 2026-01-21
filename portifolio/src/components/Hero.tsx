@@ -1,28 +1,65 @@
 import { Box, Button, Container, Typography } from "@mui/material"
+import LogoBg from "../images/Logo.png"
 
 const Hero = () => {
   return (
     <Box
       sx={{
-        minHeight: "900px",
-        display: "center",
+        minHeight: "100vh",
+        width: "100%",
+        overflowX: "hidden",
+
+        display: "flex",
         alignItems: "center",
+        justifyContent: "center",
         textAlign: "center",
-        background: "linear-gradient(135deg, #1E1E1E, #111111)",
-        
+        position: "relative",
+
+        backgroundImage: `url(${LogoBg})`,
+        backgroundRepeat: "no-repeat",
+        backgroundPosition: "center",
+        backgroundSize: "cover",
       }}
     >
+      {/* OVERLAY para suavizar o background */}
+      <Box
+        sx={{
+          position: "absolute",
+          inset: 0,
+          backgroundColor: "rgba(17,17,17,0.75)",
+        }}
+      />
 
-      <Container id="topo">
-        <Typography  variant="h2" mb={3}>
-          Conectando você ao melhor da tecnologia
+      <Container
+        id="topo"
+        sx={{
+          position: "relative",
+          zIndex: 1,
+        }}
+      >
+        <Typography
+          variant="h2"
+          mb={3}
+          color="white"
+          fontWeight={800}
+        >
+          Conectando você ao melhor da{" "}
+          <span style={{ color: "#FF8C00" }}>tecnologia</span>
         </Typography>
 
-        <Button 
+        <Button
           variant="contained"
           size="large"
           href="#produtos"
-          
+          sx={{
+            backgroundColor: "#FF8C00",
+            color: "#000",
+            fontWeight: 700,
+            px: 4,
+            "&:hover": {
+              backgroundColor: "#ff9f2e",
+            },
+          }}
         >
           Ver produtos
         </Button>
