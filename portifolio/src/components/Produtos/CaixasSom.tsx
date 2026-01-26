@@ -1,10 +1,10 @@
 import { Box, Container, Grid, Typography, Button } from "@mui/material"
-import ShoppingCartIcon from "@mui/icons-material/ShoppingCart"
+
 
 import ProductCard from "../../components/Produtos/ProductCart"
 import CartTopBar from "../../components/CartTopBar"
 import CaixaSomImg from "../../images/CaixasSom.png"
-import { useCart } from "../../context/useCart"
+
 import ArrowBackIcon from "@mui/icons-material/ArrowBack"
 import { useNavigate } from "react-router-dom"
 
@@ -30,7 +30,6 @@ const items = [
 ]
 
 const CaixasSom = () => {
-  const { cartItems } = useCart()
   const navigate = useNavigate()
 
 
@@ -39,55 +38,7 @@ const CaixasSom = () => {
       {/* 🔝 Carrinho fixo no topo */}
       <CartTopBar />
 
-      {/* 🔗 Emblema flutuante âncora */}
-      {cartItems.length > 0 && (
-        <Box
-          component="a"
-          href="#cart-top"
-          sx={{
-            position: "fixed",
-            bottom: 24,
-            right: 24,
-            zIndex: 20,
-            backgroundColor: "#FF8C00",
-            color: "#000",
-            width: 56,
-            height: 56,
-            borderRadius: "50%",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            boxShadow: 6,
-            textDecoration: "none",
-            "&:hover": {
-              backgroundColor: "#ff9f2e",
-            },
-          }}
-        >
-          <ShoppingCartIcon />
-
-          <Box
-          
-            sx={{
-              position: "absolute",
-              top: -6,
-              right: -6,
-              backgroundColor: "#000",
-              color: "#FF8C00",
-              borderRadius: "50%",
-              width: 22,
-              height: 22,
-              fontSize: 12,
-              fontWeight: 700,
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-            }}
-          >
-            {cartItems.length}
-          </Box>
-        </Box>
-      )}
+     
 
       <Container>
                   <Button

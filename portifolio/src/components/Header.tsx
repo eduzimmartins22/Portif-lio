@@ -101,22 +101,24 @@ const Header = () => {
         {openProdutos && (
           <Box sx={{ pl: 2 }}>
             {[
-              "Celulares",
-              "Película",
-              "Capinhas",
-              "Mochilas",
-              "Bicicletas",
-              "Fones",
-              "Caixas de Som",
+              { label: "Celulares", path: "/celulares" },
+              { label: "Películas", path: "/peliculas" },
+              { label: "Capinhas", path: "/capinhas" },
+              { label: "Mochilas", path: "/mochilas" },
+              { label: "Bicicletas", path: "/bicicletas" },
+              { label: "Fones", path: "/fones" },
+              { label: "Caixas de Som", path: "/caixas-som" },
             ].map((item) => (
-              <MenuItem
-              component={Link}
-                to="/bicicletas#Bicicletas"
-                onClick={handleMenuClose}
-              >
-                {item}
-              </MenuItem>
-            ))}
+          <MenuItem
+    key={item.path}
+    component={Link}
+    to={item.path}
+    onClick={handleMenuClose}
+  >
+    {item.label}
+  </MenuItem>
+))}
+
           </Box>
         )}
 
