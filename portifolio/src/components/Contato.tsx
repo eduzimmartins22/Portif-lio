@@ -51,7 +51,7 @@ ${formData.pergunta}
           <span style={{ color: "#FF8C00" }}>Contato</span>
         </Typography>
 
-        <Grid container spacing={4} justifyContent="center">
+        <Grid container spacing={{ xs: 3, md: 4 }} justifyContent="center">
           {/* CONTATOS */}
           <Grid size={{ xs: 12, md: 6 }}>
             <Paper
@@ -120,7 +120,15 @@ ${formData.pergunta}
                 TIRE SUAS DÚVIDAS AQUI !
               </Typography>
 
-              <Box component="form" display="flex" flexDirection="column" gap={2} >
+              <Box
+  component="form"
+  sx={{
+    display: "flex",
+    flexDirection: "column",
+    gap: { xs: 2.5, md: 2 },
+  }}
+>
+
                 <TextField
                   label="Nome"
                   name="nome"

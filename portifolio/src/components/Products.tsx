@@ -43,7 +43,7 @@ const Products = () => {
                 to={item.link}
                 sx={{
                   p: 3,
-                  height: 320,
+                  height: { xs: "auto", md: 320 },
                   borderRadius: 4,
                   textDecoration: "none",
                   display: "flex",

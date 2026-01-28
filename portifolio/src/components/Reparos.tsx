@@ -52,6 +52,7 @@ const Reparo = () => {
         <Box
           sx={{
             display: { xs: "block", md: "flex" },
+            flexDirection: { xs: "column", md: "row" },
             gap: 6,
             alignItems: "stretch",
           }}
