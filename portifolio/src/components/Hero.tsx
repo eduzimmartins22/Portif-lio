@@ -18,10 +18,12 @@ const Hero = () => {
         backgroundImage: `url(${LogoBg})`,
         backgroundRepeat: "no-repeat",
         backgroundPosition: "center",
-        backgroundSize: "cover",
+        backgroundSize: { xs: "contain", md: "cover" },
+
+        px: { xs: 2, md: 0 },
       }}
     >
-      {/* OVERLAY para suavizar o background */}
+      {/* OVERLAY */}
       <Box
         sx={{
           position: "absolute",
@@ -35,18 +37,18 @@ const Hero = () => {
         sx={{
           position: "relative",
           zIndex: 1,
+          px: { xs: 2, md: 3 },
         }}
       >
-<Typography
-  mb={3}
-  color="white"
-  fontWeight={800}
-  sx={{
-    fontSize: { xs: "2rem", md: "3.2rem" },
-    lineHeight: 1.2
-  }}
->
-
+        <Typography
+          mb={3}
+          color="white"
+          fontWeight={800}
+          sx={{
+            fontSize: { xs: "2rem", md: "3.2rem" },
+            lineHeight: 1.2,
+          }}
+        >
           Conectando você ao melhor da{" "}
           <span style={{ color: "#FF8C00" }}>tecnologia</span>
         </Typography>

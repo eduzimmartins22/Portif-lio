@@ -24,15 +24,15 @@ const hoverCard = {
   boxShadow: 4,
   transition: "all 0.3s ease",
   "&:hover": {
-    transform: "translateY(-6px) scale(1.02)",
+    transform: { md: "translateY(-6px) scale(1.02)" },
     boxShadow: 10,
   },
 }
 
 const Reparo = () => {
   return (
-    <Box id="Reparo" py={22} bgcolor="#1A1A1A" >
-      <Container>
+    <Box id="Reparo" py={{ xs: 12, md: 22 }} bgcolor="#1A1A1A">
+      <Container sx={{ px: { xs: 2, md: 3 } }}>
         <Box textAlign="center" mb={8}>
           <Emblema>
             <VerifiedIcon />
@@ -44,16 +44,17 @@ const Reparo = () => {
           </Typography>
 
           <Typography fontSize={18}>
-            📍 Atendimento presencial no <strong>Terminal de Carapina – Serra/ES</strong>
+            📍 Atendimento presencial no{" "}
+            <strong>Terminal de Carapina – Serra/ES</strong>
           </Typography>
         </Box>
 
         {/* BOXES */}
         <Box
           sx={{
-            display: { xs: "block", md: "flex" },
+            display: "flex",
             flexDirection: { xs: "column", md: "row" },
-            gap: 6,
+            gap: { xs: 3, md: 6 },
             alignItems: "stretch",
           }}
         >
@@ -80,7 +81,7 @@ const Reparo = () => {
             </Typography>
 
             <Typography fontWeight="bold" color="#FF8C00">
-              O melhor custo-benefício para você 
+              O melhor custo-benefício para você
             </Typography>
           </Box>
 
@@ -103,15 +104,9 @@ const Reparo = () => {
             <Typography mb={1}>
               <PhoneIphoneIcon sx={{ fontSize: 16 }} /> Telas (Incel, OLED, AMOLED)
             </Typography>
-            <Typography mb={1}>
-              🔋 Baterias originais e compatíveis
-            </Typography>
-            <Typography mb={1}>
-              🔌 Conectores de carga e flex power
-            </Typography>
-            <Typography mb={1}>
-              📷 Lentes, câmeras e alto-falantes
-            </Typography>
+            <Typography mb={1}>🔋 Baterias originais e compatíveis</Typography>
+            <Typography mb={1}>🔌 Conectores de carga e flex power</Typography>
+            <Typography mb={1}>📷 Lentes, câmeras e alto-falantes</Typography>
 
             <Typography mt={2} fontWeight="bold">
               Estoque focado no que realmente vende.
