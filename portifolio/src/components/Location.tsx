@@ -58,32 +58,32 @@ const Location = () => {
             />
           </Box>
 
-          {/* MAPA */}
-          <Box
-            sx={{
-              ...hoverCard,
-              flex: 1,
-              width: "100%",
-            }}
-          >
-            <Box
-              sx={{
-                width: "100%",
-                height: { xs: 260, md: 300 },
-                borderRadius: 3,
-                overflow: "hidden",
-              }}
-            >
-              <iframe
-                width="100%"
-                height="100%"
-                style={{ border: 0 }}
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-                src="https://www.google.com/maps?q=Terminal%20de%20Carapina%20Serra%20ES&output=embed"
-              />
-            </Box>
-          </Box>
+{/* MAPA */}
+<Box
+  sx={{
+    ...hoverCard,
+    flex: 1,
+    width: "100%",
+    padding: 0,                 // remove padding só do mapa
+    overflow: "hidden",
+    position: "relative",
+    minHeight: { xs: 260, md: 300 }, // 🔥 garante altura no mobile
+  }}
+>
+  <iframe
+    width="100%"
+    height="100%"
+    style={{
+      border: 0,
+      position: "absolute",
+      inset: 0,                 // top:0, right:0, bottom:0, left:0
+    }}
+    loading="lazy"
+    referrerPolicy="no-referrer-when-downgrade"
+    src="https://www.google.com/maps?q=Terminal%20de%20Carapina%20Serra%20ES&output=embed"
+  />
+</Box>
+
         </Box>
       </Container>
     </Box>
