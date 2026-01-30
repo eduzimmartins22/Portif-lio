@@ -4,6 +4,12 @@ import { Box, Container, Typography, Button } from "@mui/material"
 import ProductCard from "../../components/Produtos/ProductCart"
 import CartTopBar from "../../components/CartTopBar"
 import CapinhasImg from "../../images/Capinhas.png"
+import CapaCouroImg from "../../images/CapaCouro.png"
+import CapaMagImg from "../../images/CapaMagnetica.png"
+import CapaSpaceImg from "../../images/CapaSpace.png"
+import CapaBlisterImg from "../../images/capaBlister.png"
+
+
 
 import ArrowBackIcon from "@mui/icons-material/ArrowBack"
 import { useNavigate } from "react-router-dom"
@@ -12,19 +18,45 @@ import { useNavigate } from "react-router-dom"
 
 const items = [
   {
-    id: "som-1",
-    name: "Caixa de Som Bluetooth",
-    model: "Pro X",
+    id: "cap-01",
+    name: "Capa de Celular Transparente",
+    model: "Iphone",
     image: CapinhasImg,
     price: 30,
     promoPrice: 12,
   },
+
   {
-    id: "som-2",
-    name: "Caixa de Som Bluetooth",
-    model: "Bass Max",
-    image: CapinhasImg,
-    price: 30,
+    id: "cap-03",
+    name: "Capa de Celular Magnetica",
+    model: "Iphone",
+    image: CapaMagImg,
+    price: 25,
+    
+  },
+ {
+    id: "cap-04",
+    name: "Capa de Celular Couro",
+    model: "Iphone",
+    image: CapaCouroImg,
+    price: 20,
+    
+  },
+   {
+    id: "cap-05",
+    name: "Capa de Celular Space",
+    model: "Iphone",
+    image: CapaSpaceImg,
+    price: 25,
+    
+  },
+   {
+    id: "cap-06",
+    name: "Capa de Celular Blister",
+    model: "Iphone",
+    image: CapaBlisterImg,
+    price: 25,
+    
   },
 ]
 
