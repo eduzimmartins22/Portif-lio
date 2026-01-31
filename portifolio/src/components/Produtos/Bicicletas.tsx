@@ -17,7 +17,7 @@ const items = [
     model: "49cc",
     image: BicicletaImg,
     price: 2999,
-    promoPrice: 2599,
+    
   },
   {
     id: "bike-2",
@@ -25,7 +25,31 @@ const items = [
     model: "80cc",
     image: BicicletaImg,
     price: 3499,
-    promoPrice: 2599,
+    promoPrice: 50,
+  },
+  {
+    id: "bike-3",
+    name: "Bicicleta Motorizada",
+    model: "80cc Pro",
+    image: BicicletaImg,
+    price: 3499,
+    promoPrice: 1599,
+  },
+  {
+    id: "bike-1",
+    name: "Bicicleta Motorizada",
+    model: "49cc",
+    image: BicicletaImg,
+    price: 2999,
+    
+  },
+  {
+    id: "bike-2",
+    name: "Bicicleta Motorizada",
+    model: "80cc",
+    image: BicicletaImg,
+    price: 3499,
+    promoPrice: 523,
   },
   {
     id: "bike-3",
