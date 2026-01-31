@@ -4,7 +4,8 @@ import styled from "@emotion/styled"
 
 const EstabelecimentoImg = styled("img")({
   width: "100%",
-  height: "auto",
+  height: "100%",
+  objectFit: "cover",
   borderRadius: 12,
 })
 
@@ -15,15 +16,15 @@ const hoverCard = {
   boxShadow: 3,
   transition: "all 0.3s ease",
   "&:hover": {
-    transform: "translateY(-6px) scale(1.02)",
+    transform: { md: "translateY(-6px) scale(1.02)" },
     boxShadow: 8,
   },
 }
 
 const Location = () => {
   return (
-    <Box id="localizacao" py={11} bgcolor="background.paper">
-      <Container sx={{ textAlign: "center" }}>
+    <Box id="localizacao" py={{ xs: 10, md: 11 }} bgcolor="background.paper">
+      <Container sx={{ textAlign: "center", px: { xs: 2, md: 3 } }}>
         <Typography variant="h2" mb={2}>
           Nossa <span style={{ color: "#FF8C00" }}>Localização</span>
         </Typography>
@@ -35,41 +36,54 @@ const Location = () => {
         {/* IMAGEM + MAPA */}
         <Box
           sx={{
-            display: { xs: "block", md: "flex" },
-            alignItems: "center",
+            display: "flex",
+            flexDirection: { xs: "column", md: "row" },
+            alignItems: "stretch",
             justifyContent: "center",
-            gap: 8,
+            gap: { xs: 3, md: 8 },
           }}
         >
           {/* IMAGEM */}
           <Box
             sx={{
               ...hoverCard,
-              display: { xs: "none", md: "block" },
-              maxWidth: 500,
+              flex: 1,
+              maxWidth: { xs: "100%", md: 500 },
+              mx: "auto",
             }}
           >
             <EstabelecimentoImg
               src={Estabelecimento}
-              alt="Estabelecimento"
+              alt="Estabelecimento UGO Celulares"
             />
           </Box>
 
-          {/* MAPA */}
-          <Box
-            sx={{
-              ...hoverCard,
-              width: { xs: "100%", md: "60%" },
-            }}
-          >
-            <iframe
-              width="100%"
-              height="300"
-              style={{ borderRadius: 16, border: 0 }}
-              loading="lazy"
-              src="https://www.google.com/maps?q=Terminal%20de%20Carapina%20Serra%20ES&output=embed"
-            />
-          </Box>
+{/* MAPA */}
+<Box
+  sx={{
+    ...hoverCard,
+    flex: 1,
+    width: "100%",
+    padding: 0,                 // remove padding só do mapa
+    overflow: "hidden",
+    position: "relative",
+    minHeight: { xs: 260, md: 300 }, // 🔥 garante altura no mobile
+  }}
+>
+  <iframe
+    width="100%"
+    height="100%"
+    style={{
+      border: 0,
+      position: "absolute",
+      inset: 0,                 // top:0, right:0, bottom:0, left:0
+    }}
+    loading="lazy"
+    referrerPolicy="no-referrer-when-downgrade"
+    src="https://www.google.com/maps?q=Terminal%20de%20Carapina%20Serra%20ES&output=embed"
+  />
+</Box>
+
         </Box>
       </Container>
     </Box>

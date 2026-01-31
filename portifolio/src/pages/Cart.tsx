@@ -5,18 +5,28 @@ import {
   IconButton,
   Divider,
   Button,
+  TextField,
 } from "@mui/material"
 import DeleteIcon from "@mui/icons-material/Delete"
 import WhatsAppIcon from "@mui/icons-material/WhatsApp"
 import ArrowBackIcon from "@mui/icons-material/ArrowBack"
 import { useNavigate } from "react-router-dom"
 import { useCart } from "../context/useCart"
+import { useState } from "react"
 
 const Cart = () => {
   const { cartItems, total, removeFromCart } = useCart()
   const navigate = useNavigate()
 
+  const [name, setName] = useState("")
+  const [cpf, setCpf] = useState("")
+
   const handleWhatsApp = () => {
+    if (!name.trim() || !cpf.trim()) {
+      alert("Por favor, preencha Nome e CPF para finalizar o pedido.")
+      return
+    }
+
     const message = cartItems
       .map(
         (item, index) =>
@@ -26,8 +36,20 @@ const Cart = () => {
       )
       .join("\n")
 
+    const fullMessage = `
+🛒 *PEDIDO UGO CELULARES*
+
+👤 *Cliente:* ${name}
+🪪 *CPF:* ${cpf}
+
+📦 *Produtos:*
+${message}
+
+💰 *Total:* R$ ${total}
+    `
+
     const url = `https://wa.me/5527999346464?text=${encodeURIComponent(
-      `🛒 Pedido UGO CELULARES\n\n${message}\n\n💰 Total: R$ ${total}`
+      fullMessage
     )}`
 
     window.open(url, "_blank")
@@ -62,6 +84,29 @@ const Cart = () => {
           </Typography>
         ) : (
           <>
+            {/* 👤 DADOS DO CLIENTE */}
+            <Box mb={4}>
+              <Typography variant="h6" mb={2}>
+                Identificação do Cliente
+              </Typography>
+
+              <TextField
+                fullWidth
+                label="Nome completo"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                sx={{ mb: 2 }}
+              />
+
+              <TextField
+                fullWidth
+                label="CPF"
+                value={cpf}
+                onChange={(e) => setCpf(e.target.value)}
+                placeholder="000.000.000-00"
+              />
+            </Box>
+
             {cartItems.map((item, index) => (
               <Box key={index} mb={3}>
                 <Box display="flex" justifyContent="space-between">
