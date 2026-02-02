@@ -4,6 +4,10 @@ import { Box, Container, Typography, Button } from "@mui/material"
 import ProductCard from "../../components/Produtos/ProductCart"
 import CartTopBar from "../../components/CartTopBar"
 import BicicletaImg from "../../images/Bicicletas.png"
+import ScooterImg from "../../images/SCOOTERMODELOST746.png"
+import CadeadoImg from "../../images/CADEADODEBICICLETA.png"
+import SuporteImg from "../../images/BICICLETASLE050ITBLUE.png"
+
 
 import ArrowBackIcon from "@mui/icons-material/ArrowBack"
 import { useNavigate } from "react-router-dom"
@@ -11,54 +15,12 @@ import { useNavigate } from "react-router-dom"
 
 
 const items = [
-  {
-    id: "bike-1",
-    name: "Bicicleta Motorizada",
-    model: "49cc",
-    image: BicicletaImg,
-    price: 2999,
-    
-  },
-  {
-    id: "bike-2",
-    name: "Bicicleta Motorizada",
-    model: "80cc",
-    image: BicicletaImg,
-    price: 3499,
-    promoPrice: 50,
-  },
-  {
-    id: "bike-3",
-    name: "Bicicleta Motorizada",
-    model: "80cc Pro",
-    image: BicicletaImg,
-    price: 3499,
-    promoPrice: 1599,
-  },
-  {
-    id: "bike-1",
-    name: "Bicicleta Motorizada",
-    model: "49cc",
-    image: BicicletaImg,
-    price: 2999,
-    
-  },
-  {
-    id: "bike-2",
-    name: "Bicicleta Motorizada",
-    model: "80cc",
-    image: BicicletaImg,
-    price: 3499,
-    promoPrice: 523,
-  },
-  { id: "5782", name: "Bicicleta Elétrica Scooter", model: "ST-746", image: BicicletaImg, price: 0 },
-  { id: "5949", name: "Bicicleta Elétrica", model: "V10 MAX MARRON", image: BicicletaImg, price: 6600 },
-  { id: "5949", name: "Bicicleta Elétrica V10", model: "Max Marron", image: BicicletaImg, price: 6600 },
-  { id: "3961", name: "Aplicação de Película", model: "Geral", image: BicicletaImg, price: 10 },
-  { id: "5862", name: "Capa Celular Space", model: "Space", image: BicicletaImg, price: 25 },
-  { id: "4604", name: "Capas Promoção", model: "Geral", image: BicicletaImg, price: 15 },
-  { id: "5733", name: "Carregador Inova", model: "TC 1M", image: BicicletaImg, price: 30 },
-  { id: "5949", name: "Bicicleta Elétrica V10", model: "Max Marron", image: BicicletaImg, price: 6600 },
+
+  { id: "5782", name: "Bicicleta Elétrica Scooter", model: "V10 MAX MARRON", image: BicicletaImg, price: 6600 },
+  { id: "5949", name: "Bicicleta Elétrica", model: "SCOOTER ST-746", image: ScooterImg, price: 4500 },
+  { id: "5783", name: "Suporte para Bicicleta", model: "ST-746", image: SuporteImg, price: 150 },
+  { id: "5950", name: "Cadeado para Bicicleta", model: "V10 MAX MARRON", image: CadeadoImg, price: 50 },
+
 ];
 
 const Bicicletas = () => {

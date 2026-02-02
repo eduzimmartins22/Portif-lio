@@ -3,7 +3,10 @@ import { Box, Container, Typography, Button } from "@mui/material"
 
 import ProductCard from "../../components/Produtos/ProductCart"
 import CartTopBar from "../../components/CartTopBar"
-import MochilasImg from "../../images/Mochilas.png"
+import EstampaFemImg from "../../images/MochilaEstampaFem.png"
+import InfantilImg from "../../images/MochilaInfantil.png"
+import FemPromoImg from "../../images/MochilaFemPromo.png"
+import PeluciaImg from "../../images/MochilaPelucia.png"
 
 import ArrowBackIcon from "@mui/icons-material/ArrowBack"
 import { useNavigate } from "react-router-dom"
@@ -12,19 +15,32 @@ import { useNavigate } from "react-router-dom"
 
 const items = [
   {
-    id: "som-1",
-    name: "Caixa de Som Bluetooth",
-    model: "Pro X",
-    image: MochilasImg,
-    price: 20,
-    promoPrice: 15,
+    id: "moch-01",
+    name: "Mochila de Pelúcia Infantil",
+    model: "Infantil • Pelúcia macia • Leve e confortável",
+    image: PeluciaImg,
+    price: 70,
   },
   {
-    id: "som-2",
-    name: "Caixa de Som Bluetooth",
-    model: "Bass Max",
-    image: MochilasImg,
-    price: 45,
+    id: "moch-02",
+    name: "Mochila Estampada Feminina",
+    model: "Feminina • Estampa moderna • Uso diário",
+    image: EstampaFemImg,
+    price: 120,
+  },
+  {
+    id: "moch-03",
+    name: "Mochila Feminina",
+    model: "Modelo 99 • Espaçosa • Alças reforçadas",
+    image: FemPromoImg,
+    price: 99,
+  },
+  {
+    id: "moch-04",
+    name: "Mochila Infantil",
+    model: "Infantil • Leve • Ideal para escola",
+    image: InfantilImg,
+    price: 50,
   },
 ]
 
