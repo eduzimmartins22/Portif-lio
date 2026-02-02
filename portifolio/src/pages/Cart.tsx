@@ -7,9 +7,16 @@ import {
   Button,
   TextField,
 } from "@mui/material"
+
 import DeleteIcon from "@mui/icons-material/Delete"
 import WhatsAppIcon from "@mui/icons-material/WhatsApp"
 import ArrowBackIcon from "@mui/icons-material/ArrowBack"
+import CreditCardIcon from "@mui/icons-material/CreditCard"
+import PaymentsIcon from "@mui/icons-material/Payments"
+import QrCodeIcon from "@mui/icons-material/QrCode"
+import AccountBalanceIcon from "@mui/icons-material/AccountBalance"
+import LocalAtmIcon from "@mui/icons-material/LocalAtm"
+
 import { useNavigate } from "react-router-dom"
 import { useCart } from "../context/useCart"
 import { useState } from "react"
@@ -20,10 +27,16 @@ const Cart = () => {
 
   const [name, setName] = useState("")
   const [cpf, setCpf] = useState("")
+  const [paymentMethod, setPaymentMethod] = useState("")
 
   const handleWhatsApp = () => {
     if (!name.trim() || !cpf.trim()) {
       alert("Por favor, preencha Nome e CPF para finalizar o pedido.")
+      return
+    }
+
+    if (!paymentMethod) {
+      alert("Por favor, selecione o modo de pagamento.")
       return
     }
 
@@ -45,6 +58,7 @@ const Cart = () => {
 📦 *Produtos:*
 ${message}
 
+💳 *Pagamento:* ${paymentMethod}
 💰 *Total:* R$ ${total}
     `
 
@@ -58,7 +72,7 @@ ${message}
   return (
     <Box py={12} minHeight="100vh" bgcolor="#0f0f0f">
       <Container maxWidth="sm">
-        {/* 🔙 BOTÃO VOLTAR */}
+        {/* 🔙 VOLTAR */}
         <Button
           startIcon={<ArrowBackIcon />}
           onClick={() => navigate(-1)}
@@ -107,6 +121,66 @@ ${message}
               />
             </Box>
 
+            {/* 💳 PAGAMENTO */}
+            <Box mb={4}>
+              <Typography variant="h6" mb={2}>
+                💳 Modo de Pagamento
+              </Typography>
+
+              <Box display="flex" flexDirection="column" gap={1}>
+                <Button
+                  variant={paymentMethod === "PIX" ? "contained" : "outlined"}
+                  startIcon={<QrCodeIcon />}
+                  onClick={() => setPaymentMethod("PIX")}
+                >
+                  PIX
+                </Button>
+
+                <Button
+                  variant={
+                    paymentMethod === "CRÉDITO (12x sem juros)"
+                      ? "contained"
+                      : "outlined"
+                  }
+                  startIcon={<CreditCardIcon />}
+                  onClick={() =>
+                    setPaymentMethod("CRÉDITO (12x sem juros)")
+                  }
+                >
+                  Crédito (12x sem juros)
+                </Button>
+
+                <Button
+                  variant={paymentMethod === "DÉBITO" ? "contained" : "outlined"}
+                  startIcon={<PaymentsIcon />}
+                  onClick={() => setPaymentMethod("DÉBITO")}
+                >
+                  Débito
+                </Button>
+
+                <Button
+                  variant={paymentMethod === "BOLETO" ? "contained" : "outlined"}
+                  startIcon={<AccountBalanceIcon />}
+                  onClick={() => setPaymentMethod("BOLETO")}
+                >
+                  Boleto
+                </Button>
+
+                <Button
+                  variant={
+                    paymentMethod === "DUAS FORMAS"
+                      ? "contained"
+                      : "outlined"
+                  }
+                  startIcon={<LocalAtmIcon />}
+                  onClick={() => setPaymentMethod("DUAS FORMAS")}
+                >
+                  Duas Formas de Pagamento
+                </Button>
+              </Box>
+            </Box>
+
+            {/* 🧾 ITENS */}
             {cartItems.map((item, index) => (
               <Box key={index} mb={3}>
                 <Box display="flex" justifyContent="space-between">
@@ -136,7 +210,8 @@ ${message}
             ))}
 
             <Typography variant="h5" textAlign="right" mb={3}>
-              Total: <span style={{ color: "#FF8C00" }}>R$ {total}</span>
+              Total:{" "}
+              <span style={{ color: "#FF8C00" }}>R$ {total}</span>
             </Typography>
 
             <Button

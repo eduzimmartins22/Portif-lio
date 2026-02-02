@@ -19,7 +19,7 @@ const CartTopBar = () => {
       id="cart-top"
       sx={{
         position: "sticky",
-        top: 64, // abaixo do Header
+        top: 64,
         zIndex: 10,
         backgroundColor: "#1a1a1a",
         borderBottom: "1px solid #333",
