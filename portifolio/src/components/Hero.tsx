@@ -1,5 +1,5 @@
 import { Box, Button, Container, Typography } from "@mui/material"
-import LogoBg from "../images/Logo.png"
+import LogoBg from "../images/LogoH.png"
 
 const Hero = () => {
   return (
