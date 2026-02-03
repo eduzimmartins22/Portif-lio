@@ -29,11 +29,13 @@ const items = [
 const Products = () => {
   return (
     <Box id="produtos" py={19} bgcolor="#F2F2F2">
+      
       <Container>
+         <span style={{ color: "#131212" }}>(VALIDAÇÃO EM ANDAMENTO...) (VALIDAÇÃO EM ANDAMENTO...) (VALIDAÇÃO EM ANDAMENTO...) (VALIDAÇÃO EM ANDAMENTO...) </span>{" "}
         <Typography variant="h2" textAlign="center" mb={6}>
           <span style={{ color: "#131212" }}>Nossos</span>{" "}
           <span style={{ color: "#FF8C00" }}>Produtos</span>
-          <span style={{ color: "#131212" }}>(EM MANUTENÇÃO... 6/7)</span>{" "}
+         
         </Typography>
 
         <Grid container spacing={5}>

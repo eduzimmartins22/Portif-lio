@@ -3,75 +3,236 @@ import { Box, Container, Typography, Button } from "@mui/material"
 
 import ProductCard from "../../components/Produtos/ProductCart"
 import CartTopBar from "../../components/CartTopBar"
-import CaixaSomImg from "../../images/CaixasSom.png"
+
+import BKImg from "../../images/BK1619.png"
+import BoomboxExtraGrandeImg from "../../images/BoomboxExtraGrande.png"
+import CaixaAmplificadaBright100WImg from "../../images/CaixaAmplificadaBright100W.png"
+import CaixaAmplificadaC11ColorImg from "../../images/CaixaAmplificadaC11Color.png"
+import CaixaAmplificadaC13ColorImg from "../../images/CaixaAmplificadaC13Color.png"
+import CaixadeSom3256Img from "../../images/CaixadeSom3256.png"
+import CaixadeSom65KTS1112Img from "../../images/CaixadeSom6.5KTS1112.png"
+import CaixadeSom900MultilaserSPImg from "../../images/CaixadeSom900MultilaserSP.png"
+import CaixadeSomAltomexAL1098Img from "../../images/CaixadeSomAltomexAL1098.png"
+import CaixadeSomBH6114Img from "../../images/CaixadeSomBH6114.png"
+import CaixadeSomBK3618Img from "../../images/CaixadeSomBK3618.png"
+import CaixadeSomBluetoothCSM31BTImg from "../../images/CaixadeSomBluetoothCSM31BT.png"
+import CaixadeSomBT2413Img from "../../images/CaixadeSomBT2413.png"
+import CaixadeSomBT2414Img from "../../images/CaixadeSomBT2414.png"
+import CaixadeSomChargeMini3Img from "../../images/CaixadeSomChargeMini3+.png"
+import CaixadeSomDBH2024Img from "../../images/CaixadeSomDBH2024.png"
+import CaixadeSomDeltaVogueMaxImg from "../../images/CaixadeSomDeltaVogueMax.png"
+import CaixadeSomGold30WSM07Img from "../../images/CaixadeSomGold30WSM07.png"
+import CaixadeSomGoldWS887Img from "../../images/CaixadeSomGoldWS887.png"
+import CaixadeSomGTS1360Img from "../../images/CaixadeSomGTS1360.png"
+import CaixadeSomGTS1567Img from "../../images/CaixadeSomGTS1567.png"
+import CaixadeSomHmaston60WTN39Img from "../../images/CaixadeSomHmaston60WTN39.png"
+import CaixadeSomHmastonKTS1296Img from "../../images/CaixadeSomHmastonKTS1296.png"
+import CaixadeSomJBLCharge5Img from "../../images/CaixadeSomJBLOriginalCharge5.png"
+import CaixadeSomJBLExtreme3Img from "../../images/CaixadeSomJBLOriginalExtreme3.png"
+import SoundbarTomateMTS2025Img from "../../images/SoundbarTomateMTS2025.png"
+
+import CaixadeSomBrightC03Img from "../../images/CaixadeSomBrightC03.png"
+import CaixadeSomD3204Img from "../../images/CaixadeSomD3204.png"
+import CaixadeSomInovaRAD8626Img from "../../images/CaixadeSomInovaRAD8626.png"
+import CaixadeSomInovaRAD8647Img from "../../images/CaixadeSomInovaRAD8647.png"
+import CaixadeSomInovaRAD9026Img from "../../images/CaixadeSomInovaRAD9026.png"
+import CaixadeSomKapbomKA8301Img from "../../images/CaixadeSomKapbomKA8301.png"
+import CaixadeSomKaraokeBK1090Img from "../../images/CaixadeSomKaraokeBK1090.png"
+import CaixadeSomKbroadKTS1721Img from "../../images/CaixadeSomKbroadKTS1721.png"
+import CaixadeSomKTS1330Img from "../../images/CaixadeSomKTS1330.png"
+import CaixadeSomKV12024Img from "../../images/CaixadeSomKV12024.png"
+import CaixadeSomKV330Img from "../../images/CaixadeSomKV330.png"
+import CaixadeSomKV88631Img from "../../images/CaixadeSomKV88631.png"
+import CaixadeSomLuzKaraokeRAD12578Img from "../../images/CaixadeSomLuzKaraokeRAD12578.png"
+import CaixadeSomMiniSpeakerM10Img from "../../images/CaixadeSomMiniSpeakerM10.png"
+import CaixadeSomPulseSP359Img from "../../images/CaixadeSomPulseSP359.png"
+import CaixadeSomSomboxPequenaImg from "../../images/CaixadeSomSomboxPequena.png"
+import MiniCaixaSomPC359BrightImg from "../../images/MiniCaixaSomPC359Bright.png"
+import MiniSubwoofer21USBBrightImg from "../../images/MiniSubwoofer2.1USBBright-removebg-preview.png"
+import MiniSubwooferUSB059BrightImg from "../../images/MiniSubwooferUSB059Bright.png"
+
 
 import ArrowBackIcon from "@mui/icons-material/ArrowBack"
 import { useNavigate } from "react-router-dom"
 
 
 
+
 const items = [
-  { id: "3439", name: "Mini Subwoofer 2.1 USB", model: "0590 Bright", image: CaixaSomImg, price: 160 },
-  { id: "3440", name: "Mini Caixa Som PC", model: "359 Bright", image: CaixaSomImg, price: 40 },
-  { id: "5327", name: "Caixa de Som", model: "BK-1619", image: CaixaSomImg, price: 50, promoPrice: 25 },
-  { id: "3844", name: "Boombox Extra Grande", model: "Extra Grande", image: CaixaSomImg, price: 390 },
-  { id: "3442", name: "Boombox Grande", model: "Grande", image: CaixaSomImg, price: 350 },
-  { id: "3438", name: "Caixa Amplificada", model: "C11 Color", image: CaixaSomImg, price: 299 },
-  { id: "3437", name: "Caixa Amplificada", model: "C13 Color", image: CaixaSomImg, price: 370, promoPrice: 185 },
-  { id: "3007", name: "Caixa Amplificada Bright", model: "100W", image: CaixaSomImg, price: 398 },
-  { id: "3006", name: "Caixa Amplificada Bright", model: "120W", image: CaixaSomImg, price: 540 },
-  { id: "4123", name: "Caixa de Som Sombox", model: "Pequena", image: CaixaSomImg, price: 230 },
-  { id: "5654", name: "Caixa de Som", model: "Kbroad KTS-1721", image: CaixaSomImg, price: 50 },
-  { id: "5146", name: "Caixa de Som", model: "3256", image: CaixaSomImg, price: 350 },
-  { id: "5735", name: "Caixa de Som 6.5", model: "KTS-1112", image: CaixaSomImg, price: 300 },
-  { id: "4067", name: "Caixa de Som 900", model: "Multilaser SP", image: CaixaSomImg, price: 120 },
-  { id: "5836", name: "Caixa de Som", model: "Altomex AL-1098", image: CaixaSomImg, price: 50 },
-  { id: "5496", name: "Caixa de Som Karaoke", model: "BK-1090", image: CaixaSomImg, price: 200 },
-  { id: "5651", name: "Caixa de Som", model: "BK-3618", image: CaixaSomImg, price: 50 },
-  { id: "5132", name: "Caixa de Som Bluetooth", model: "CS-M31BT", image: CaixaSomImg, price: 180 },
-  { id: "5550", name: "Caixa de Som", model: "BT-2413", image: CaixaSomImg, price: 200, promoPrice: 110 },
-  { id: "5498", name: "Caixa de Som", model: "BT-2414", image: CaixaSomImg, price: 200, promoPrice: 110 },
-  { id: "5123", name: "Caixa de Som", model: "C03", image: CaixaSomImg, price: 200 },
-  { id: "3612", name: "Caixa de Som", model: "Charge Mini 3+", image: CaixaSomImg, price: 59.9 },
-  { id: "4863", name: "Caixa de Som", model: "D-3204", image: CaixaSomImg, price: 300 },
-  { id: "4858", name: "Caixa de Som", model: "D-BH2024", image: CaixaSomImg, price: 230, promoPrice: 115 },
-  { id: "4864", name: "Caixa de Som", model: "D-BH6114", image: CaixaSomImg, price: 350, promoPrice: 175 },
-  { id: "3849", name: "Caixa de Som", model: "Delta Vogue Max", image: CaixaSomImg, price: 73 },
-  { id: "5639", name: "Caixa de Som", model: "GTS-1360", image: CaixaSomImg, price: 45 },
-  { id: "5737", name: "Caixa de Som Gold 30W", model: "SM-07", image: CaixaSomImg, price: 250 },
-  { id: "4416", name: "Caixa de Som Gold", model: "WS-887", image: CaixaSomImg, price: 30, promoPrice: 16.5 },
-  { id: "4862", name: "Caixa de Som", model: "GTS-1567", image: CaixaSomImg, price: 499, promoPrice: 249.5 },
-  { id: "5738", name: "Caixa de Som Hmaston 60W", model: "TN39", image: CaixaSomImg, price: 280 },
-  { id: "5956", name: "Caixa de Som Mini Speaker", model: "M10", image: CaixaSomImg, price: 40 },
-  { id: "4857", name: "Caixa de Som Inova", model: "RAD-8647", image: CaixaSomImg, price: 250, promoPrice: 125 },
-  { id: "4120", name: "Caixa de Som JBL Original", model: "Charge 5", image: CaixaSomImg, price: 1100 },
-  { id: "4119", name: "Caixa de Som JBL Original", model: "Extreme 3", image: CaixaSomImg, price: 1950 },
-  { id: "5497", name: "Caixa de Som Kapbom", model: "KA-8301", image: CaixaSomImg, price: 250, promoPrice: 125 },
-  { id: "5495", name: "Caixa de Som Hmaston", model: "KTS-1296", image: CaixaSomImg, price: 200, promoPrice: 100 },
-  { id: "5147", name: "Caixa de Som", model: "KTS-1330", image: CaixaSomImg, price: 350, promoPrice: 150 },
-  { id: "4867", name: "Caixa de Som", model: "KV-12024", image: CaixaSomImg, price: 240, promoPrice: 120 },
-  { id: "4870", name: "Caixa de Som", model: "KV-330", image: CaixaSomImg, price: 250, promoPrice: 125 },
-  { id: "5565", name: "Caixa de Som", model: "KV-88631", image: CaixaSomImg, price: 50, promoPrice: 25 },
-  { id: "5564", name: "Caixa de Som", model: "LES-887", image: CaixaSomImg, price: 29.99, promoPrice: 15 },
-  { id: "5526", name: "Caixa de Som Luz e Karaoke", model: "RAD-12578", image: CaixaSomImg, price: 100, promoPrice: 50 },
-  { id: "4704", name: "Caixa de Som Mini Hmaston", model: "M3", image: CaixaSomImg, price: 60, promoPrice: 30 },
-  { id: "4064", name: "Caixa de Som Pulse", model: "SP359", image: CaixaSomImg, price: 1050 },
-  { id: "4861", name: "Caixa de Som Inova", model: "RAD-8626", image: CaixaSomImg, price: 222, promoPrice: 111 },
-  { id: "4904", name: "Caixa de Som Inova", model: "RAD-9026", image: CaixaSomImg, price: 150, promoPrice: 75 },
-  { id: "4432", name: "Soundbar Tomate", model: "MTS-2025", image: CaixaSomImg, price: 0 },
-  { id: "3439", name: "Mini Subwoofer 2.1", model: "USB Bright", image: CaixaSomImg, price: 160 },
-  { id: "3007", name: "Caixa Amplificada", model: "Bright 100W", image: CaixaSomImg, price: 398 },
-  { id: "5146", name: "Caixa de Som 3256", model: "3256", image: CaixaSomImg, price: 350 },
-  { id: "5550", name: "Caixa de Som BT-2413", model: "BT-2413", image: CaixaSomImg, price: 200, promoPrice: 110 },
-  { id: "4858", name: "Caixa de Som Grasep", model: "D-BH2024", image: CaixaSomImg, price: 230, promoPrice: 115 },
-  { id: "4864", name: "Caixa de Som", model: "D-BH6114", image: CaixaSomImg, price: 350, promoPrice: 175 },
-  { id: "4862", name: "Caixa de Som GTS", model: "GTS-1567", image: CaixaSomImg, price: 499, promoPrice: 249.5 },
-  { id: "4120", name: "JBL Charge 5", model: "Original", image: CaixaSomImg, price: 1100 },
-  { id: "4119", name: "JBL Extreme 3", model: "Original", image: CaixaSomImg, price: 1950 },
-  { id: "5495", name: "KTS-1296 Hmaston", model: "KTS-1296", image: CaixaSomImg, price: 200, promoPrice: 100 },
-  { id: "5147", name: "Caixa de Som KTS", model: "KTS-1330", image: CaixaSomImg, price: 350, promoPrice: 150 },
-  { id: "4867", name: "Caixa de Som KV", model: "KV-12024", image: CaixaSomImg, price: 240, promoPrice: 120 }
-];
+  { id: "bk1619", name: "Caixa de Som", model: "BK-1619", image: BKImg, price: 50, promoPrice: 25 },
+
+  { id: "boombox-extra", name: "Boombox", model: "Extra Grande", image: BoomboxExtraGrandeImg, price: 390 },
+
+  { id: "amp-c11", name: "Caixa Amplificada", model: "C11 Color", image: CaixaAmplificadaC11ColorImg, price: 299 },
+  { id: "amp-c13", name: "Caixa Amplificada", model: "C13 Color", image: CaixaAmplificadaC13ColorImg, price: 370, promoPrice: 185 },
+  { id: "amp-100w", name: "Caixa Amplificada Bright", model: "100W", image: CaixaAmplificadaBright100WImg, price: 398 },
+
+  { id: "3256", name: "Caixa de Som", model: "3256", image: CaixadeSom3256Img, price: 350 },
+  { id: "kts1112", name: "Caixa de Som 6.5", model: "KTS-1112", image: CaixadeSom65KTS1112Img, price: 300 },
+  { id: "multilaser900", name: "Caixa de Som", model: "Multilaser SP 900", image: CaixadeSom900MultilaserSPImg, price: 120 },
+
+  { id: "altomex1098", name: "Caixa de Som", model: "Altomex AL-1098", image: CaixadeSomAltomexAL1098Img, price: 50 },
+  { id: "bk3618", name: "Caixa de Som", model: "BK-3618", image: CaixadeSomBK3618Img, price: 50 },
+
+  { id: "bluetooth-csm31", name: "Caixa de Som Bluetooth", model: "CS-M31BT", image: CaixadeSomBluetoothCSM31BTImg, price: 180 },
+
+  { id: "bt2413", name: "Caixa de Som", model: "BT-2413", image: CaixadeSomBT2413Img, price: 200, promoPrice: 110 },
+  { id: "bt2414", name: "Caixa de Som", model: "BT-2414", image: CaixadeSomBT2414Img, price: 200, promoPrice: 110 },
+
+  { id: "charge-mini", name: "Caixa de Som", model: "Charge Mini 3+", image: CaixadeSomChargeMini3Img, price: 59.9 },
+
+  { id: "dbh2024", name: "Caixa de Som", model: "D-BH2024", image: CaixadeSomDBH2024Img, price: 230, promoPrice: 115 },
+  { id: "dbh6114", name: "Caixa de Som", model: "D-BH6114", image: CaixadeSomBH6114Img, price: 350, promoPrice: 175 },
+
+  { id: "delta-max", name: "Caixa de Som", model: "Delta Vogue Max", image: CaixadeSomDeltaVogueMaxImg, price: 73 },
+
+  { id: "gts1360", name: "Caixa de Som", model: "GTS-1360", image: CaixadeSomGTS1360Img, price: 45 },
+  { id: "gts1567", name: "Caixa de Som", model: "GTS-1567", image: CaixadeSomGTS1567Img, price: 499, promoPrice: 249.5 },
+
+  { id: "gold30w", name: "Caixa de Som Gold", model: "30W SM-07", image: CaixadeSomGold30WSM07Img, price: 250 },
+  { id: "ws887", name: "Caixa de Som Gold", model: "WS-887", image: CaixadeSomGoldWS887Img, price: 30, promoPrice: 16.5 },
+
+  { id: "hmaston60w", name: "Caixa de Som Hmaston", model: "60W TN39", image: CaixadeSomHmaston60WTN39Img, price: 280 },
+  { id: "kts1296", name: "Caixa de Som Hmaston", model: "KTS-1296", image: CaixadeSomHmastonKTS1296Img, price: 200, promoPrice: 100 },
+
+  { id: "jbl-charge5", name: "JBL Charge 5", model: "Original", image: CaixadeSomJBLCharge5Img, price: 1100 },
+  { id: "jbl-extreme3", name: "JBL Extreme 3", model: "Original", image: CaixadeSomJBLExtreme3Img, price: 1950 },
+
+  { id: "soundbar", name: "Soundbar Tomate", model: "MTS-2025", image: SoundbarTomateMTS2025Img, price: 0 },
+  {
+    id: "bright-c03",
+    name: "Caixa de Som Bright",
+    model: "C-03 • Bluetooth • Compacta",
+    image: CaixadeSomBrightC03Img,
+    price: 0,
+  },
+  {
+    id: "d3204",
+    name: "Caixa de Som",
+    model: "D-3204 • Bluetooth • Portátil",
+    image: CaixadeSomD3204Img,
+    price: 0,
+  },
+  {
+    id: "rad-8626",
+    name: "Caixa de Som Inova",
+    model: "RAD-8626 • Bluetooth • Graves reforçados",
+    image: CaixadeSomInovaRAD8626Img,
+    price: 0,
+  },
+  {
+    id: "rad-8647",
+    name: "Caixa de Som Inova",
+    model: "RAD-8647 • Bluetooth • Portátil",
+    image: CaixadeSomInovaRAD8647Img,
+    price: 0,
+  },
+  {
+    id: "rad-9026",
+    name: "Caixa de Som Inova",
+    model: "RAD-9026 • Bluetooth • Alta potência",
+    image: CaixadeSomInovaRAD9026Img,
+    price: 0,
+  },
+  {
+    id: "ka-8301",
+    name: "Caixa de Som Kapbom",
+    model: "KA-8301 • Bluetooth • Portátil",
+    image: CaixadeSomKapbomKA8301Img,
+    price: 0,
+  },
+  {
+    id: "bk-1090",
+    name: "Caixa de Som Karaokê",
+    model: "BK-1090 • Bluetooth • Microfone",
+    image: CaixadeSomKaraokeBK1090Img,
+    price: 0,
+  },
+  {
+    id: "kts-1721",
+    name: "Caixa de Som Kbroad",
+    model: "KTS-1721 • Bluetooth • Potente",
+    image: CaixadeSomKbroadKTS1721Img,
+    price: 0,
+  },
+  {
+    id: "kts-1330",
+    name: "Caixa de Som",
+    model: "KTS-1330 • Bluetooth • Portátil",
+    image: CaixadeSomKTS1330Img,
+    price: 0,
+  },
+  {
+    id: "kv-12024",
+    name: "Caixa de Som",
+    model: "KV-12024 • Bluetooth • Som potente",
+    image: CaixadeSomKV12024Img,
+    price: 0,
+  },
+  {
+    id: "kv-330",
+    name: "Caixa de Som",
+    model: "KV-330 • Bluetooth • Compacta",
+    image: CaixadeSomKV330Img,
+    price: 0,
+  },
+  {
+    id: "kv-88631",
+    name: "Caixa de Som",
+    model: "KV-88631 • Bluetooth • Portátil",
+    image: CaixadeSomKV88631Img,
+    price: 0,
+  },
+  {
+    id: "rad-12578",
+    name: "Caixa de Som com Luz",
+    model: "RAD-12578 • Karaokê • LED",
+    image: CaixadeSomLuzKaraokeRAD12578Img,
+    price: 0,
+  },
+  {
+    id: "mini-m10",
+    name: "Mini Speaker",
+    model: "M10 • Bluetooth • Ultra compacto",
+    image: CaixadeSomMiniSpeakerM10Img,
+    price: 0,
+  },
+  {
+    id: "pulse-sp359",
+    name: "Caixa de Som Pulse",
+    model: "SP-359 • Bluetooth • Portátil",
+    image: CaixadeSomPulseSP359Img,
+    price: 0,
+  },
+  {
+    id: "sombox-pequena",
+    name: "Caixa de Som",
+    model: "Sombox • Pequena • Bluetooth",
+    image: CaixadeSomSomboxPequenaImg,
+    price: 0,
+  },
+  {
+    id: "pc-359",
+    name: "Mini Caixa de Som Bright",
+    model: "PC-359 • USB • Compacta",
+    image: MiniCaixaSomPC359BrightImg,
+    price: 0,
+  },
+  {
+    id: "subwoofer-21",
+    name: "Mini Subwoofer",
+    model: "2.1 • USB • Som estéreo",
+    image: MiniSubwoofer21USBBrightImg,
+    price: 0,
+  },
+  {
+    id: "subwoofer-059",
+    name: "Mini Subwoofer",
+    model: "USB-059 • Compacto • Estéreo",
+    image: MiniSubwooferUSB059BrightImg,
+    price: 0,
+  },
+]
 
 const CaixasSom = () => {
   const navigate = useNavigate()
