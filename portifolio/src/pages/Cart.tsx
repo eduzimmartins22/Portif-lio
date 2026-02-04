@@ -29,27 +29,27 @@ const Cart = () => {
   const [cpf, setCpf] = useState("")
   const [paymentMethod, setPaymentMethod] = useState("")
 
-  const handleWhatsApp = () => {
-    if (!name.trim() || !cpf.trim()) {
-      alert("Por favor, preencha Nome e CPF para finalizar o pedido.")
-      return
-    }
+const handleWhatsApp = async () => {
+  if (!name.trim() || !cpf.trim()) {
+    alert("Por favor, preencha Nome e CPF para finalizar o pedido.")
+    return
+  }
 
-    if (!paymentMethod) {
-      alert("Por favor, selecione o modo de pagamento.")
-      return
-    }
+  if (!paymentMethod) {
+    alert("Por favor, selecione o modo de pagamento.")
+    return
+  }
 
-    const message = cartItems
-      .map(
-        (item, index) =>
-          `${index + 1}. ${item.name} - R$ ${item.price}${
-            item.observation ? ` | Obs: ${item.observation}` : ""
-          }`
-      )
-      .join("\n")
+  const message = cartItems
+    .map(
+      (item, index) =>
+        `${index + 1}. ${item.name} - R$ ${item.price}${
+          item.observation ? ` | Obs: ${item.observation}` : ""
+        }`
+    )
+    .join("\n")
 
-    const fullMessage = `
+  const fullMessage = `
 🛒 *PEDIDO UGO CELULARES*
 
 👤 *Cliente:* ${name}
@@ -60,14 +60,31 @@ ${message}
 
 💳 *Pagamento:* ${paymentMethod}
 💰 *Total:* R$ ${total}
-    `
+  `.trim()
 
-    const url = `https://wa.me/5527999346464?text=${encodeURIComponent(
-      fullMessage
-    )}`
+  // 🔐 A PARTIR DAQUI MUDA
+  const res = await fetch("/.netlify/functions/whatsapp", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ message: fullMessage }),
+  })
 
-    window.open(url, "_blank")
+  const data = await res.json()
+
+  if (!data.url || !data.signature) {
+    alert("Erro de segurança. Tente novamente.")
+    return
   }
+
+  // 🛡️ (opcional, mas recomendado)
+  if (!data.url.startsWith("https://wa.me/")) {
+    alert("Falha de segurança detectada.")
+    return
+  }
+
+  window.open(data.url, "_blank")
+}
+
 
   return (
     <Box py={12} minHeight="100vh" bgcolor="#0f0f0f">
