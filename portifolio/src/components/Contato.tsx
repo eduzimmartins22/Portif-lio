@@ -2,12 +2,12 @@ import { useState } from "react"
 import {
   Box,
   Container,
-  Grid,
   Paper,
   Typography,
   Button,
   TextField,
 } from "@mui/material"
+import Grid from "@mui/material/Grid"
 import WhatsAppIcon from "@mui/icons-material/WhatsApp"
 import EmailIcon from "@mui/icons-material/Email"
 import SendIcon from "@mui/icons-material/Send"
@@ -83,7 +83,7 @@ ${formData.pergunta}
 
         <Grid container spacing={6}  alignItems="center" justifyContent="center" >
           {/* CONTATOS RÁPIDOS */}
-          <Grid  xs={12} md={5}>
+          <Grid  size={{ xs: 12, md: 5 }}>
             <Paper
               sx={{
                 p: 5,
@@ -139,7 +139,7 @@ ${formData.pergunta}
           </Grid>
 
           {/* FORMULÁRIO */}
-          <Grid  xs={12} md={7}>
+          <Grid size={{ xs: 12, md: 7 }}>
             <Paper
               sx={{
                 p: 5,
