@@ -1,8 +1,10 @@
 import {
   Box,
   Container,
-  Paper,
   Typography,
+  Card,
+  CardContent,
+  CardMedia,
 } from "@mui/material"
 import Grid from "@mui/material/Grid"
 import { Link } from "react-router-dom"
@@ -25,56 +27,111 @@ const items = [
   { name: "Bicicletas Motorizadas", image: Bicicletas, link: "/bicicletas" },
 ]
 
-
 const Products = () => {
   return (
-    <Box id="produtos" py={19} bgcolor="#F2F2F2">
-      
+    <Box
+      id="produtos"
+      py={{ xs: 12, md: 18 }}
+      sx={{
+        backgroundColor: "#F7F7F7",
+      }}
+    >
       <Container>
-         <span style={{ color: "#131212" }}>(VALIDAÇÃO EM ANDAMENTO...) (VALIDAÇÃO EM ANDAMENTO...) (VALIDAÇÃO EM ANDAMENTO...) (VALIDAÇÃO EM ANDAMENTO...) </span>{" "}
-        <Typography variant="h2" textAlign="center" mb={6}>
-          <span style={{ color: "#131212" }}>Nossos</span>{" "}
-          <span style={{ color: "#FF8C00" }}>Produtos</span>
-         
-        </Typography>
+        {/* Header */}
+        <Box textAlign="center" mb={8}>
+          <Typography
+            variant="overline"
+            sx={{
+              color: "#FF8C00",
+              fontWeight: 700,
+              letterSpacing: 1.5,
+            }}
+          >
+            CATEGORIAS
+          </Typography>
 
-        <Grid container spacing={5}>
+          <Typography
+            sx={{
+              fontSize: { xs: "2rem", md: "2.8rem" },
+              fontWeight: 800,
+              color: "#111",
+              mt: 1,
+            }}
+          >
+            Nossos Produtos
+          </Typography>
+
+          <Typography
+            sx={{
+              mt: 2,
+              color: "#555",
+              maxWidth: 520,
+              mx: "auto",
+            }}
+          >
+            Selecionamos os produtos mais procurados para garantir qualidade,
+            disponibilidade e excelente custo-benefício.
+          </Typography>
+        </Box>
+
+        {/* Grid */}
+        <Grid container spacing={4}>
           {items.map((item) => (
-            <Grid size={{ xs: 12, sm: 6, md: 4 }} key={item.name}>
-              <Paper
+            <Grid item xs={12} sm={6} md={4} key={item.name}>
+              <Card
                 component={Link}
                 to={item.link}
+                elevation={0}
                 sx={{
-                  p: 3,
-                  height: { xs: "auto", md: 320 },
+                  height: 320,
                   borderRadius: 4,
                   textDecoration: "none",
+                  border: "1px solid #EAEAEA",
+                  transition: "all 0.3s ease",
                   display: "flex",
                   flexDirection: "column",
-                  alignItems: "center",
                   justifyContent: "space-between",
-                  transition: "0.3s",
                   "&:hover": {
                     transform: "translateY(-6px)",
-                    boxShadow: 8,
+                    boxShadow: "0 15px 35px rgba(0,0,0,0.08)",
+                    borderColor: "#FF8C00",
                   },
                 }}
               >
-                <Box
+                <CardMedia
                   component="img"
-                  src={item.image}
+                  image={item.image}
                   alt={item.name}
                   sx={{
-                    maxWidth: "100%",
-                    maxHeight: 180,
+                    height: 200,
                     objectFit: "contain",
+                    p: 3,
                   }}
                 />
 
-                <Typography variant="h6" textAlign="center">
-                  {item.name}
-                </Typography>
-              </Paper>
+                <CardContent sx={{ textAlign: "center" }}>
+                  <Typography
+                    variant="h6"
+                    sx={{
+                      fontWeight: 700,
+                      color: "#111",
+                    }}
+                  >
+                    {item.name}
+                  </Typography>
+
+                  <Typography
+                    sx={{
+                      mt: 1,
+                      fontSize: 14,
+                      color: "#FF8C00",
+                      fontWeight: 600,
+                    }}
+                  >
+                    Explorar →
+                  </Typography>
+                </CardContent>
+              </Card>
             </Grid>
           ))}
         </Grid>

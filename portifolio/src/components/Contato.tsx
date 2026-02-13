@@ -8,6 +8,9 @@ import {
   Button,
   TextField,
 } from "@mui/material"
+import WhatsAppIcon from "@mui/icons-material/WhatsApp"
+import EmailIcon from "@mui/icons-material/Email"
+import SendIcon from "@mui/icons-material/Send"
 
 const Pagamento = () => {
   const [formData, setFormData] = useState({
@@ -29,7 +32,7 @@ const Pagamento = () => {
 Olá, gostaria de entrar em contato.
 
 📌 Nome: ${formData.nome}
-📧 Gmail: ${formData.email}
+📧 Email: ${formData.email}
 📱 Telefone: ${formData.telefone}
 
 ❓ Pergunta:
@@ -45,90 +48,122 @@ ${formData.pergunta}
   }
 
   return (
-    <Box id="pagamento" py={16} sx={{ backgroundColor: "#F2F2F2" }}>
+    <Box
+      id="contato"
+      py={{ xs: 12, md: 18 }}
+      sx={{
+        background: "linear-gradient(180deg,#0f0f0f 0%,#1A1A1A 100%)",
+        color: "white",
+      }}
+    >
       <Container>
-        <Typography variant="h2" textAlign="center" mb={4}>
-          <span style={{ color: "#FF8C00" }}>Contato</span>
-        </Typography>
+        {/* HEADER */}
+        <Box textAlign="center" mb={10}>
+          <Typography
+            variant="overline"
+            sx={{ color: "#FF8C00", letterSpacing: 2, fontWeight: 700 }}
+          >
+            FALE CONOSCO
+          </Typography>
 
-        <Grid container spacing={{ xs: 3, md: 4 }} justifyContent="center">
-          {/* CONTATOS */}
-          <Grid size={{ xs: 12, md: 6 }}>
+          <Typography
+            sx={{
+              fontSize: { xs: "2.2rem", md: "3rem" },
+              fontWeight: 800,
+              mt: 2,
+            }}
+          >
+            Entre em <span style={{ color: "#FF8C00" }}>Contato</span>
+          </Typography>
+
+          <Typography sx={{ mt: 2, opacity: 0.7 }}>
+            Tire suas dúvidas ou solicite um orçamento rapidamente.
+          </Typography>
+        </Box>
+
+        <Grid container spacing={6}  alignItems="center" justifyContent="center" >
+          {/* CONTATOS RÁPIDOS */}
+          <Grid item xs={12} md={5}>
             <Paper
               sx={{
-                p: 4,
+                p: 5,
+                backgroundColor: "#1F1F1F",
+                borderRadius: 4,
+                border: "1px solid rgba(255,255,255,0.05)",
                 display: "flex",
                 flexDirection: "column",
-                gap: 3,
-                backgroundColor: "#FAFAFA",
-                border: "1px solid #E0E0E0",
-                borderRadius: 2,
+                gap: 4,
               }}
             >
-              <Box>
-                <Typography sx={{ color: "#503d3d", mb: 0.5 }}>
-                  Gmail
-                </Typography>
+              <Typography variant="h6" fontWeight={700}>
+                Atendimento direto
+              </Typography>
 
-                <Button
-                  variant="contained"
-                  color="error"
-                  href="mailto:ugocelularescontato@gmail.com"
-                >
-                  FALAR NO GMAIL
-                </Button>
-              </Box>
+              <Button
+                startIcon={<WhatsAppIcon />}
+                href="https://wa.me/5527999346464"
+                sx={{
+                  background:
+                    "linear-gradient(135deg,#ff8c00,#ffb347)",
+                  color: "#000",
+                  fontWeight: 700,
+                  py: 1.5,
+                  borderRadius: 3,
+                  "&:hover": {
+                    transform: "scale(1.03)",
+                  },
+                }}
+              >
+                Falar no WhatsApp
+              </Button>
 
-              <Box>
-                <Typography sx={{ color: "#503d3d", mb: 1 }}>
-                  Whatsapp
-                </Typography>
-
-                <Button
-                  variant="contained"
-                  color="success"
-                  href="https://wa.me/5527999346464"
-                >
-                  Falar no WhatsApp
-                </Button>
-              </Box>
+              <Button
+                startIcon={<EmailIcon />}
+                href="mailto:ugocelularescontato@gmail.com"
+                variant="outlined"
+                sx={{
+                  borderColor: "rgba(255,255,255,0.3)",
+                  color: "white",
+                  fontWeight: 600,
+                  py: 1.5,
+                  borderRadius: 3,
+                  "&:hover": {
+                    borderColor: "#FF8C00",
+                    color: "#FF8C00",
+                  },
+                }}
+              >
+                Enviar Email
+              </Button>
             </Paper>
           </Grid>
 
           {/* FORMULÁRIO */}
-          <Grid size={{ xs: 12, md: 6 }}>
+          <Grid item xs={12} md={7}>
             <Paper
               sx={{
-                p: 4,
-                backgroundColor: "#FAFAFA",
-                border: "1px solid #E0E0E0",
-                borderRadius: 2,
+                p: 5,
+                backgroundColor: "#1F1F1F",
+                borderRadius: 4,
+                border: "1px solid rgba(255,255,255,0.05)",
               }}
             >
               <Typography
-                textAlign="center"
-                sx={{
-                  backgroundColor: "#1A1818",
-                  color: "#FFFFFF",
-                  fontSize: 13,
-                  padding: "6px 14px",
-                  borderRadius: 2,
-                  margin: "0 auto 16px",
-
-                }}
+                variant="h6"
+                fontWeight={700}
+                mb={4}
               >
-                TIRE SUAS DÚVIDAS AQUI !
+                Ou envie sua mensagem
               </Typography>
 
               <Box
-  component="form"
-  sx={{
-    display: "flex",
-    flexDirection: "column",
-    gap: { xs: 2.5, md: 2 },
-  }}
->
-
+                component="form"
+                sx={{
+                  display: "flex",
+                  flexDirection: "column",
+                  gap: 3,
+                }}
+              >
                 <TextField
                   label="Nome"
                   name="nome"
@@ -139,7 +174,7 @@ ${formData.pergunta}
                 />
 
                 <TextField
-                  label="Gmail"
+                  label="Email"
                   name="email"
                   type="email"
                   value={formData.email}
@@ -149,7 +184,7 @@ ${formData.pergunta}
                 />
 
                 <TextField
-                  label="Número"
+                  label="Telefone"
                   name="telefone"
                   type="tel"
                   value={formData.telefone}
@@ -159,7 +194,7 @@ ${formData.pergunta}
                 />
 
                 <TextField
-                  label="Pergunta"
+                  label="Mensagem"
                   name="pergunta"
                   value={formData.pergunta}
                   onChange={handleChange}
@@ -167,11 +202,26 @@ ${formData.pergunta}
                   rows={4}
                   fullWidth
                   sx={inputStyle}
-
                 />
 
-                <Button variant="contained" onClick={handleSubmit}>
-                  Enviar
+                <Button
+                  variant="contained"
+                  startIcon={<SendIcon />}
+                  onClick={handleSubmit}
+                  sx={{
+                    mt: 2,
+                    background:
+                      "linear-gradient(135deg,#ff8c00,#ffb347)",
+                    color: "#000",
+                    fontWeight: 700,
+                    py: 1.5,
+                    borderRadius: 3,
+                    "&:hover": {
+                      transform: "scale(1.03)",
+                    },
+                  }}
+                >
+                  Enviar Mensagem
                 </Button>
               </Box>
             </Paper>
@@ -184,36 +234,23 @@ ${formData.pergunta}
 
 const inputStyle = {
   "& .MuiInputLabel-root": {
-    color: "#ffffff",
+    color: "#aaa",
   },
-
   "& .MuiInputLabel-root.Mui-focused": {
-    color: "#bb9a09",
+    color: "#FF8C00",
   },
-
   "& .MuiOutlinedInput-root": {
-    backgroundColor: "#1E1E1E",
-    color: "#EAEAEA",
-    // 👈 TEXTO DIGITADO
-
-    "& input": {
-      color: "#FFFFFF",
-    },
-
-    "& textarea": {
-      color: "#FFFFFF",
-    },
-
+    backgroundColor: "#141414",
+    color: "#fff",
+    borderRadius: 3,
     "& fieldset": {
-      borderColor: "#503d3d",
+      borderColor: "rgba(255,255,255,0.1)",
     },
-
     "&:hover fieldset": {
-      borderColor: "#1A1818",
+      borderColor: "rgba(255,255,255,0.3)",
     },
-
     "&.Mui-focused fieldset": {
-      borderColor: "#1A1818",
+      borderColor: "#FF8C00",
     },
   },
 }

@@ -3,7 +3,6 @@ import {
   Container,
   Typography,
   IconButton,
-  Divider,
   Button,
   TextField,
 } from "@mui/material"
@@ -21,6 +20,13 @@ import { useNavigate } from "react-router-dom"
 import { useCart } from "../context/useCart"
 import { useState } from "react"
 
+const sectionCard = {
+  backgroundColor: "#0B0B0D    ",
+  p: 3,
+  borderRadius: 3,
+  mb: 4,
+}
+
 const Cart = () => {
   const { cartItems, total, removeFromCart } = useCart()
   const navigate = useNavigate()
@@ -29,84 +35,75 @@ const Cart = () => {
   const [cpf, setCpf] = useState("")
   const [paymentMethod, setPaymentMethod] = useState("")
 
-const handleWhatsApp = async () => {
-  if (!name.trim() || !cpf.trim()) {
-    alert("Por favor, preencha Nome e CPF para finalizar o pedido.")
-    return
-  }
+  const handleWhatsApp = async () => {
+    if (!name.trim() || !cpf.trim()) {
+      alert("Por favor, preencha Nome e CPF.")
+      return
+    }
 
-  if (!paymentMethod) {
-    alert("Por favor, selecione o modo de pagamento.")
-    return
-  }
+    if (!paymentMethod) {
+      alert("Selecione o modo de pagamento.")
+      return
+    }
 
-  const message = cartItems
-    .map(
-      (item, index) =>
-        `${index + 1}. ${item.name} - R$ ${item.price}${
-          item.observation ? ` | Obs: ${item.observation}` : ""
-        }`
-    )
-    .join("\n")
+    const message = cartItems
+      .map(
+        (item, index) =>
+          `${index + 1}. ${item.name} - R$ ${item.price}${
+            item.observation ? ` | Obs: ${item.observation}` : ""
+          }`
+      )
+      .join("\n")
 
-  const fullMessage = `
+    const fullMessage = `
 🛒 *PEDIDO UGO CELULARES*
 
-👤 *Cliente:* ${name}
-🪪 *CPF:* ${cpf}
+👤 Cliente: ${name}
+🪪 CPF: ${cpf}
 
-📦 *Produtos:*
+📦 Produtos:
 ${message}
 
-💳 *Pagamento:* ${paymentMethod}
-💰 *Total:* R$ ${total}
-  `.trim()
+💳 Pagamento: ${paymentMethod}
+💰 Total: R$ ${total}
+    `.trim()
 
-  // 🔐 A PARTIR DAQUI MUDA
-  const res = await fetch("/.netlify/functions/whatsapp", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ message: fullMessage }),
-  })
+    const res = await fetch("/.netlify/functions/whatsapp", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ message: fullMessage }),
+    })
 
-  const data = await res.json()
+    const data = await res.json()
 
-  if (!data.url || !data.signature) {
-    alert("Erro de segurança. Tente novamente.")
-    return
+    if (!data.url || !data.url.startsWith("https://wa.me/")) {
+      alert("Erro ao gerar link.")
+      return
+    }
+
+    window.open(data.url, "_blank")
   }
-
-  // 🛡️ (opcional, mas recomendado)
-  if (!data.url.startsWith("https://wa.me/")) {
-    alert("Falha de segurança detectada.")
-    return
-  }
-
-  window.open(data.url, "_blank")
-}
-
 
   return (
     <Box py={12} minHeight="100vh" bgcolor="#0f0f0f">
       <Container maxWidth="sm">
-        {/* 🔙 VOLTAR */}
+
+        {/* VOLTAR */}
         <Button
           startIcon={<ArrowBackIcon />}
           onClick={() => navigate(-1)}
           sx={{
-            mb: 3,
+            mb: 4,
             color: "#FF8C00",
             fontWeight: 600,
-            "&:hover": {
-              backgroundColor: "rgba(255,140,0,0.1)",
-            },
+            "&:hover": { backgroundColor: "rgba(255,140,0,0.1)" },
           }}
         >
           Voltar
         </Button>
 
-        <Typography variant="h3" mb={4} textAlign="center">
-          🛒 Seu Carrinho
+        <Typography variant="h4" textAlign="center" mb={6} fontWeight={700}>
+          Seu Carrinho
         </Typography>
 
         {cartItems.length === 0 ? (
@@ -115,9 +112,9 @@ ${message}
           </Typography>
         ) : (
           <>
-            {/* 👤 DADOS DO CLIENTE */}
-            <Box mb={4}>
-              <Typography variant="h6" mb={2}>
+            {/* IDENTIFICAÇÃO */}
+            <Box sx={sectionCard}>
+              <Typography variant="subtitle1" fontWeight={700} mb={2}>
                 Identificação do Cliente
               </Typography>
 
@@ -138,99 +135,108 @@ ${message}
               />
             </Box>
 
-            {/* 💳 PAGAMENTO */}
-            <Box mb={4}>
-              <Typography variant="h6" mb={2}>
-                💳 Modo de Pagamento
+            {/* PAGAMENTO */}
+            <Box sx={sectionCard}>
+              <Typography variant="subtitle1" fontWeight={700} mb={2}>
+                Forma de Pagamento
               </Typography>
 
-              <Box display="flex" flexDirection="column" gap={1}>
-                <Button
-                  variant={paymentMethod === "PIX" ? "contained" : "outlined"}
-                  startIcon={<QrCodeIcon />}
-                  onClick={() => setPaymentMethod("PIX")}
-                >
-                  PIX
-                </Button>
-
-                <Button
-                  variant={
-                    paymentMethod === "CRÉDITO (12x sem juros)"
-                      ? "contained"
-                      : "outlined"
-                  }
-                  startIcon={<CreditCardIcon />}
-                  onClick={() =>
-                    setPaymentMethod("CRÉDITO (12x sem juros)")
-                  }
-                >
-                  Crédito (12x sem juros)
-                </Button>
-
-                <Button
-                  variant={paymentMethod === "DÉBITO" ? "contained" : "outlined"}
-                  startIcon={<PaymentsIcon />}
-                  onClick={() => setPaymentMethod("DÉBITO")}
-                >
-                  Débito
-                </Button>
-
-                <Button
-                  variant={paymentMethod === "BOLETO" ? "contained" : "outlined"}
-                  startIcon={<AccountBalanceIcon />}
-                  onClick={() => setPaymentMethod("BOLETO")}
-                >
-                  Boleto
-                </Button>
-
-                <Button
-                  variant={
-                    paymentMethod === "DUAS FORMAS"
-                      ? "contained"
-                      : "outlined"
-                  }
-                  startIcon={<LocalAtmIcon />}
-                  onClick={() => setPaymentMethod("DUAS FORMAS")}
-                >
-                  Duas Formas de Pagamento
-                </Button>
+              <Box display="grid" gridTemplateColumns="1fr 1fr" gap={1.5}>
+                {[
+                  { label: "PIX", icon: <QrCodeIcon /> },
+                  { label: "Crédito (12x)", icon: <CreditCardIcon /> },
+                  { label: "Débito", icon: <PaymentsIcon /> },
+                  { label: "Boleto", icon: <AccountBalanceIcon /> },
+                  { label: "Duas Formas", icon: <LocalAtmIcon /> },
+                ].map((option) => (
+                  <Button
+                    key={option.label}
+                    variant={
+                      paymentMethod === option.label
+                        ? "contained"
+                        : "outlined"
+                    }
+                    startIcon={option.icon}
+                    onClick={() => setPaymentMethod(option.label)}
+                    sx={{
+                      borderRadius: 2,
+                      fontWeight: 600,
+                      ...(paymentMethod === option.label && {
+                        backgroundColor: "#FF8C00",
+                        color: "#000",
+                      }),
+                    }}
+                  >
+                    {option.label}
+                  </Button>
+                ))}
               </Box>
             </Box>
 
-            {/* 🧾 ITENS */}
-            {cartItems.map((item, index) => (
-              <Box key={index} mb={3}>
-                <Box display="flex" justifyContent="space-between">
-                  <Box>
-                    <Typography fontWeight={700}>{item.name}</Typography>
-                    {item.observation && (
-                      <Typography fontSize={13} color="gray">
-                        Obs: {item.observation}
-                      </Typography>
-                    )}
-                  </Box>
+            {/* ITENS */}
+            <Box sx={sectionCard}>
+              <Typography variant="subtitle1" fontWeight={700} mb={3}>
+                Itens do Pedido
+              </Typography>
 
-                  <Box display="flex" alignItems="center" gap={1}>
-                    <Typography fontWeight={700}>
-                      R$ {item.price}
-                    </Typography>
-                    <IconButton
-                      onClick={() => removeFromCart(index)}
-                      sx={{ color: "#FF8C00" }}
-                    >
-                      <DeleteIcon />
-                    </IconButton>
+              {cartItems.map((item, index) => (
+                <Box
+                  key={index}
+                  sx={{
+                    backgroundColor: "#161616",
+                    p: 2,
+                    borderRadius: 2,
+                    mb: 2,
+                  }}
+                >
+                  <Box display="flex" justifyContent="space-between">
+                    <Box>
+                      <Typography fontWeight={700}>
+                        {item.name}
+                      </Typography>
+
+                      {item.observation && (
+                        <Typography fontSize={13} color="gray">
+                          Obs: {item.observation}
+                        </Typography>
+                      )}
+                    </Box>
+
+                    <Box display="flex" alignItems="center" gap={1}>
+                      <Typography fontWeight={700}>
+                        R$ {item.price}
+                      </Typography>
+                      <IconButton
+                        onClick={() => removeFromCart(index)}
+                        sx={{ color: "#FF8C00" }}
+                      >
+                        <DeleteIcon />
+                      </IconButton>
+                    </Box>
                   </Box>
                 </Box>
-                <Divider sx={{ my: 2 }} />
-              </Box>
-            ))}
+              ))}
+            </Box>
 
-            <Typography variant="h5" textAlign="right" mb={3}>
-              Total:{" "}
-              <span style={{ color: "#FF8C00" }}>R$ {total}</span>
-            </Typography>
+            {/* TOTAL */}
+            <Box
+              sx={{
+                backgroundColor: "#0B0B0D  ",
+                p: 3,
+                borderRadius: 3,
+                textAlign: "right",
+                mb: 4,
+              }}
+            >
+              <Typography variant="subtitle2" color="gray">
+                Total do Pedido
+              </Typography>
+              <Typography variant="h4" fontWeight={700} color="#FF8C00">
+                R$ {total}
+              </Typography>
+            </Box>
 
+            {/* FINALIZAR */}
             <Button
               fullWidth
               startIcon={<WhatsAppIcon />}
@@ -239,7 +245,10 @@ ${message}
                 backgroundColor: "#25D366",
                 color: "#000",
                 fontWeight: 700,
-                py: 1.5,
+                py: 1.8,
+                fontSize: 16,
+                borderRadius: 3,
+                boxShadow: 4,
                 "&:hover": { backgroundColor: "#1ebe5d" },
               }}
             >

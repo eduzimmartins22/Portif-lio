@@ -1,5 +1,6 @@
-import { Box, Button, Container, Typography } from "@mui/material"
+import { Box, Button, Container, Typography, Stack } from "@mui/material"
 import LogoBg from "../images/LogoH.png"
+import ArrowDownwardIcon from "@mui/icons-material/ArrowDownward"
 
 const Hero = () => {
   return (
@@ -7,28 +8,35 @@ const Hero = () => {
       sx={{
         minHeight: "100vh",
         width: "100%",
-        overflowX: "hidden",
-
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
         textAlign: "center",
         position: "relative",
+        overflow: "hidden",
 
-        backgroundImage: `url(${LogoBg})`,
+        background: `
+          linear-gradient(rgba(10,10,10,0.85), rgba(15,15,15,0.9)),
+          url(${LogoBg})
+        `,
         backgroundRepeat: "no-repeat",
         backgroundPosition: "center",
         backgroundSize: { xs: "contain", md: "cover" },
-
-        px: { xs: 2, md: 0 },
       }}
     >
-      {/* OVERLAY */}
+      {/* Glow background effect */}
       <Box
         sx={{
           position: "absolute",
-          inset: 0,
-          backgroundColor: "rgba(17,17,17,0.75)",
+          width: 500,
+          height: 500,
+          background:
+            "radial-gradient(circle, rgba(255,140,0,0.25) 0%, transparent 70%)",
+          top: "20%",
+          left: "50%",
+          transform: "translateX(-50%)",
+          filter: "blur(90px)",
+          zIndex: 0,
         }}
       />
 
@@ -36,41 +44,77 @@ const Hero = () => {
         id="topo"
         sx={{
           position: "relative",
-          zIndex: 1,
-          px: { xs: 2, md: 3 },
+          zIndex: 2,
         }}
       >
+        {/* Headline */}
         <Typography
-          mb={3}
-          color="white"
-          fontWeight={800}
           sx={{
-            fontSize: { xs: "2rem", md: "3.2rem" },
-            lineHeight: 1.2,
+            fontWeight: 900,
+            fontSize: { xs: "2.2rem", md: "3.8rem" },
+            lineHeight: 1.15,
+            mb: 3,
+            letterSpacing: "-1px",
           }}
         >
-          Conectando você ao melhor da{" "}
-          <span style={{ color: "#FF8C00" }}>tecnologia</span>
+          Conectando você a{" "}
+          <span
+            style={{
+              background: "linear-gradient(135deg,#ff8c00,#ffb347)",
+              WebkitBackgroundClip: "text",
+              WebkitTextFillColor: "transparent",
+            }}
+          >
+            tecnologia
+          </span>
         </Typography>
 
-        <Button
-          variant="contained"
-          size="large"
-          href="#produtos"
+        {/* Subheadline */}
+        <Typography
           sx={{
-            backgroundColor: "#FF8C00",
-            color: "#000",
-            fontWeight: 700,
-            px: 4,
-            "&:hover": {
-              backgroundColor: "#ff9f2e",
-            },
+            fontSize: { xs: "1rem", md: "1.2rem" },
+            opacity: 0.8,
+            maxWidth: 600,
+            mx: "auto",
+            mb: 5,
           }}
         >
-          Ver produtos
-        </Button>
+          Assistência técnica especializada, produtos de qualidade e atendimento
+          rápido no Terminal de Carapina – Serra/ES.
+        </Typography>
+
+        {/* CTA Buttons */}
+        <Stack
+          direction={{ xs: "column", sm: "row" }}
+          spacing={3}
+          justifyContent="center"
+        >
+          
+
+          <Button
+            variant="outlined"
+            endIcon={<ArrowDownwardIcon />}
+            href="#produtos"
+            sx={{
+              borderColor: "rgba(255,255,255,0.3)",
+              color: "white",
+              fontWeight: 600,
+              px: 4,
+              py: 1.6,
+              borderRadius: 3,
+              backdropFilter: "blur(10px)",
+              "&:hover": {
+                borderColor: "#FF8C00",
+                color: "#FF8C00",
+              },
+            }}
+          >
+            Ver Produtos
+          </Button>
+        </Stack>
       </Container>
-    </Box>
+      </Box>
+
   )
 }
 

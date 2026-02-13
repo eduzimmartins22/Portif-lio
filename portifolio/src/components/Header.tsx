@@ -132,7 +132,7 @@ const Header = () => {
           Localização
         </MenuItem>
 
-        <MenuItem component="a" href="#pagamento" onClick={handleMenuClose}>
+        <MenuItem component="a" href="#contato" onClick={handleMenuClose}>
           Contato
         </MenuItem>
       </Menu>
