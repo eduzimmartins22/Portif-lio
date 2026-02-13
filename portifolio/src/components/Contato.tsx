@@ -29,10 +29,10 @@ const Pagamento = () => {
     })
   }
 
-  const handleSubmit = async (e?: React.FormEvent) => {
-    e?.preventDefault()
+const handleSubmit = async (e?: React.FormEvent) => {
+  e?.preventDefault()
 
-    const mensagem = `
+  const mensagem = `
 Olá, gostaria de entrar em contato.
 
 📌 Nome: ${formData.nome}
@@ -41,26 +41,33 @@ Olá, gostaria de entrar em contato.
 
 ❓ Pergunta:
 ${formData.pergunta}
-    `.trim()
+  `.trim()
 
-    try {
-      const response = await fetch("/.netlify/functions/whatsapp", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ message: mensagem }),
-      })
+  try {
+    const response = await fetch("/.netlify/functions/whatsapp", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ message: mensagem }),
+    })
 
-      const data = await response.json()
-
-      if (data.url) {
-        window.open(data.url, "_blank")
-      }
-    } catch (error) {
-      console.error("Erro ao enviar mensagem:", error)
+    if (!response.ok) {
+      throw new Error("Erro na função")
     }
+
+    const data = await response.json()
+
+    if (data?.url) {
+      window.open(data.url, "_blank", "noopener,noreferrer")
+    } else {
+      throw new Error("URL não retornada")
+    }
+  } catch (error) {
+    console.error("Erro ao enviar mensagem:", error)
+    alert("Erro ao abrir WhatsApp. Tente novamente.")
   }
+}
 
   return (
     <Box
