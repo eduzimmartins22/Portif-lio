@@ -193,12 +193,7 @@ const Reparo = () => {
     variant="contained"
     onClick={() => {
       const mensagem = `
-Olá, vim pelo site e gostaria de solicitar um orçamento para reparo de celular.
-
-📱 Modelo do aparelho:
-🛠️ Problema apresentado:
-
-Atendimento no Terminal de Carapina.
+Olá, vim pelo site e gostaria de solicitar um orçamento para reparo de meu Aparelho.
       `.trim()
 
       const telefone = "5527999346464"
