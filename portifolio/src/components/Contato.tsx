@@ -20,14 +20,18 @@ const Pagamento = () => {
     pergunta: "",
   })
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value,
     })
   }
 
-  const handleSubmit = () => {
+  const handleSubmit = async (e?: React.FormEvent) => {
+    e?.preventDefault()
+
     const mensagem = `
 Olá, gostaria de entrar em contato.
 
@@ -39,12 +43,23 @@ Olá, gostaria de entrar em contato.
 ${formData.pergunta}
     `.trim()
 
-    const telefoneDestino = "5527999346464"
-    const url = `https://wa.me/${telefoneDestino}?text=${encodeURIComponent(
-      mensagem
-    )}`
+    try {
+      const response = await fetch("/.netlify/functions/whatsapp", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ message: mensagem }),
+      })
 
-    window.open(url, "_blank")
+      const data = await response.json()
+
+      if (data.url) {
+        window.open(data.url, "_blank")
+      }
+    } catch (error) {
+      console.error("Erro ao enviar mensagem:", error)
+    }
   }
 
   return (
@@ -81,9 +96,9 @@ ${formData.pergunta}
           </Typography>
         </Box>
 
-        <Grid container spacing={6}  alignItems="center" justifyContent="center" >
+        <Grid container spacing={6} alignItems="center" justifyContent="center">
           {/* CONTATOS RÁPIDOS */}
-          <Grid  size={{ xs: 12, md: 5 }}>
+          <Grid size={{ xs: 12, md: 5 }}>
             <Paper
               sx={{
                 p: 5,
@@ -101,10 +116,13 @@ ${formData.pergunta}
 
               <Button
                 startIcon={<WhatsAppIcon />}
-                href="https://wa.me/5527999346464"
+                onClick={() =>
+                  handleSubmit({
+                    preventDefault: () => {},
+                  } as React.FormEvent)
+                }
                 sx={{
-                  background:
-                    "linear-gradient(135deg,#ff8c00,#ffb347)",
+                  background: "linear-gradient(135deg,#ff8c00,#ffb347)",
                   color: "#000",
                   fontWeight: 700,
                   py: 1.5,
@@ -148,16 +166,13 @@ ${formData.pergunta}
                 border: "1px solid rgba(255,255,255,0.05)",
               }}
             >
-              <Typography
-                variant="h6"
-                fontWeight={700}
-                mb={4}
-              >
+              <Typography variant="h6" fontWeight={700} mb={4}>
                 Ou envie sua mensagem
               </Typography>
 
               <Box
                 component="form"
+                onSubmit={handleSubmit}
                 sx={{
                   display: "flex",
                   flexDirection: "column",
@@ -205,13 +220,12 @@ ${formData.pergunta}
                 />
 
                 <Button
+                  type="submit"
                   variant="contained"
                   startIcon={<SendIcon />}
-                  onClick={handleSubmit}
                   sx={{
                     mt: 2,
-                    background:
-                      "linear-gradient(135deg,#ff8c00,#ffb347)",
+                    background: "linear-gradient(135deg,#ff8c00,#ffb347)",
                     color: "#000",
                     fontWeight: 700,
                     py: 1.5,

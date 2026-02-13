@@ -186,28 +186,46 @@ const Reparo = () => {
         </Box>
 
         {/* CTA */}
-        <Box textAlign="center" mt={10}>
-          <Button href="https://wa.me/5527999346464"
-            startIcon={<WhatsAppIcon />}
-            variant="contained"
-            sx={{
-              background: "linear-gradient(135deg,#ff8c00,#ffb347)",
-              color: "#000",
-              fontWeight: 700,
-              px: 5,
-              py: 1.8,
-              borderRadius: 3,
-              fontSize: 16,
-              transition: "0.3s",
-              "&:hover": {
-                transform: "scale(1.05)",
-                boxShadow: "0 10px 30px rgba(255,140,0,0.4)",
-              },
-            }}
-          >
-            Solicitar Orçamento no WhatsApp
-          </Button>
-        </Box>
+        {/* CTA */}
+<Box textAlign="center" mt={10}>
+  <Button
+    startIcon={<WhatsAppIcon />}
+    variant="contained"
+    onClick={() => {
+      const mensagem = `
+Olá, vim pelo site e gostaria de solicitar um orçamento para reparo de celular.
+
+📱 Modelo do aparelho:
+🛠️ Problema apresentado:
+
+Atendimento no Terminal de Carapina.
+      `.trim()
+
+      const telefone = "5527999346464"
+      const url = `https://wa.me/${telefone}?text=${encodeURIComponent(
+        mensagem
+      )}`
+
+      window.open(url, "_blank")
+    }}
+    sx={{
+      background: "linear-gradient(135deg,#ff8c00,#ffb347)",
+      color: "#000",
+      fontWeight: 700,
+      px: 5,
+      py: 1.8,
+      borderRadius: 3,
+      fontSize: 16,
+      transition: "0.3s",
+      "&:hover": {
+        transform: "scale(1.05)",
+        boxShadow: "0 10px 30px rgba(255,140,0,0.4)",
+      },
+    }}
+  >
+    Solicitar Orçamento no WhatsApp
+  </Button>
+</Box>
       </Container>
     </Box>
   )
