@@ -3,6 +3,10 @@ import type { Handler } from "@netlify/functions"
 
 export const handler: Handler = async (event) => {
   try {
+    if (event.httpMethod !== "POST") {
+      return { statusCode: 405, body: "Method Not Allowed" }
+    }
+
     const SECRET = process.env.WHATSAPP_SECRET
     const PHONE = process.env.WHATSAPP_NUMBER
 
@@ -13,10 +17,6 @@ export const handler: Handler = async (event) => {
           error: "Variáveis de ambiente não configuradas",
         }),
       }
-    }
-
-    if (event.httpMethod !== "POST") {
-      return { statusCode: 405, body: "Method Not Allowed" }
     }
 
     const { message } = JSON.parse(event.body || "{}")
@@ -40,11 +40,9 @@ export const handler: Handler = async (event) => {
       body: JSON.stringify({ url, signature }),
     }
   } catch (error) {
-    console.error("Erro interno:", error)
-
     return {
       statusCode: 500,
-      body: JSON.stringify({ error: "Erro interno do servidor" }),
+      body: JSON.stringify({ error: "Erro interno na função" }),
     }
   }
 }
