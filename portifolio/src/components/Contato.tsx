@@ -83,7 +83,7 @@ ${formData.pergunta}
 
         <Grid container spacing={6}  alignItems="center" justifyContent="center" >
           {/* CONTATOS RÁPIDOS */}
-          <Grid item xs={12} md={5}>
+          <Grid  xs={12} md={5}>
             <Paper
               sx={{
                 p: 5,
@@ -139,7 +139,7 @@ ${formData.pergunta}
           </Grid>
 
           {/* FORMULÁRIO */}
-          <Grid item xs={12} md={7}>
+          <Grid  xs={12} md={7}>
             <Paper
               sx={{
                 p: 5,
